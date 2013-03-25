@@ -1,7 +1,7 @@
 MakeMe::Application.routes.draw do
   devise_for :users
 
-  root :to => "lists#list"
+  #root :to => "lists#list"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

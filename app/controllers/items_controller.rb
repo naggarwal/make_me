@@ -52,5 +52,28 @@ class ItemsController < ApplicationController
 		flash[:notice] = "Your item,#{item.name}, is gone. Boom!" 
 		redirect_to(:action => 'list', :id => item.list.id)
 	end
+	
+	def display
+		list_id = params[:list_id]
+		@list = List.find(list_id)
+		puts "List id is : #{list_id}"
+		selected_list = Item.get_selected(list_id).limit(1)
+		puts "Selected List = #{selected_list}"
+		if (selected_list.size == 0 )
+			not_selected_list = Item.get_working_set(list_id)
+			if( not_selected_list.size > 0 )
+			  working = not_selected_list[rand(not_selected_list.size)]
+			  working.selected = true
+			  working.save
+			  @selected = working
+			else
+				@selected = nil
+				flash[:notice] = "There are no items to complete in this list"
+			end
+			
+		else
+			@selected = selected_list[0]
+		end
+	end
 
 end

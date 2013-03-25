@@ -1,0 +1,8 @@
+<h2>Item</h2>
+	<% if @selected != nil %>
+		<div><%=@selected.name %></div>
+	<% else %>
+		<div>
+		Add a new item to your list :<br />
+		<%=link_to("Add new Item", {:action => 'new', :id => @list.id})%>
+	<% end %>
