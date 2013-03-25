@@ -1,0 +1,7 @@
+<%= error_messages_for(@item) %>
+<input type=hidden name="listId" id="listId" value="<%=@list.id%>">
+<%= f.input :name, required: true, hint:"Enter the name of the item" %>
+<%= f.input :short_description, as: :text, required: false, label: "What is this", hint:"What is the purpose of this?" %>
+<%= f.input :image_url, required: false, hint:"Optional" %>
+<%= f.input :main_url, required: false, label:"Link", hint:"Is there a URL?" %>
+<%= f.button :submit %>

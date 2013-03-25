@@ -1,0 +1,31 @@
+	
+	<div class="span8 offset2">
+		Welcome to the Make_Me Application.  I know I have created a ton of "to list" over the years:
+			<ul>
+				<li>Recipes that I want to try</li>
+				<li>Resturants that I should go to</li>
+				<li>My Bucket List</li>
+				<li>Places to see</li>
+			</ul>
+		These lists keep growing and growing and I rarely check it out when I am looking for something to do. It is just too daunting.  Make_Me is an application to take the decision out of your hands.
+		Select a category and we will tell you what to do.  That's it, go do it.
+		(can't?)
+		Well, we let you skip doing something up to <strong>three</strong> times, no more.  If you skip it more than three times, you probably really don't want to do it.
+	</div>
+	<div class="span12" style="padding-top:15px">
+	<div><h2>Your Categories:</h2></div>
+		<% if @lists.size > 0 %>
+		<div>Click to name of the category to see what you need to do next.</div>
+			<% @lists.each do |list| %>
+				<div>
+					<p><%= link_to(list.name, {:action => 'edit', :id => list.id}) %> - See All Items(<%=link_to(list.items.size, {:controller => 'items', :action => 'list', :id => list.id } )%>) - <%= link_to("Delete me", {:action => 'destroy', :id => list.id}) %></p>
+				</div>
+			<% end %>
+		<% else %>
+			<div>
+				<p>You do not have any Categories yet, please add one below</p>
+			</div>
+		<% end %>
+
+		<%=link_to("Add new List", {:action => 'new'}, {:class => "btn btn-primary"})%>
+	</div>

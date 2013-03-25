@@ -1,0 +1,9 @@
+<div><h2>Edit Item in <%= @list.name%> </h2></div>
+	<p></p>
+	<%= simple_form_for(:item, :url => {:action => 'update', :id => @item.id}, :html => {:class => 'form-horizontal' }) do |f| %>
+
+		<%= render(:partial => "form", :locals => {:f => f}) %>
+		<div class="bottonRow">
+			<%= submit_tag("update item")%>
+		</div>
+	<% end %>
