@@ -1,16 +1,23 @@
 class ListsController < ApplicationController
+	before_filter :authenticate_user!
+	
 	def index
 		list
 		render('list')
 	end
 	
 	def list
-		@lists = List.all
+		if (user_signed_in?)
+			puts "User ID : #{current_user.id}"
+			@lists = List.get_users_list(current_user.id)
+		else
+			@lists = nil
+		end
 	end
 	
 	def show
 		@list = List.find(params[:id])
-		puts @list
+		#puts @list
 	end
 	
 	def new
@@ -19,6 +26,7 @@ class ListsController < ApplicationController
 	
 	def create
 		@list = List.new(params[:list])
+		@list.user_id = current_user.id
 		if @list.save
 			flash[:notice] = "Your list,#{@list.name}, was created successfully" 
 			redirect_to(:action => 'list')

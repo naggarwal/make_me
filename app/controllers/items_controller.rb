@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+	before_filter :authenticate_user!
+	
 	def index
 		
 		redirect_to(:controller => 'lists', :action =>'list')
@@ -17,6 +19,7 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(params[:item])
 		@item.source = "webApp"
+		@item.number_of_skips = 0
 		@list = List.find(params["listId"])
 		
 		if @list.items << @item
@@ -69,11 +72,37 @@ class ItemsController < ApplicationController
 			else
 				@selected = nil
 				flash[:notice] = "There are no items to complete in this list"
+				redirect_to(:action => 'list', :id => @list.id)
 			end
 			
 		else
 			@selected = selected_list[0]
 		end
 	end
+	
+	def skip
+		item = Item.find(params[:id])
+		list = item.list
+		
+		working = Item.select_the_next_one(list.id)
+		
+		item.number_of_skips =  item.number_of_skips + 1
+		item.selected = false
+		item.save
+		flash[:notice] = "Item Skiped. You can skip \"#{item.name}\" another #{pluralize(item.number_of_skips, 'time')}."
+		redirect_to({:action =>'display', :list_id => list.id})
+	end
+	
+	def complete
+		item = Item.find(params[:id])
+		list = item.list
+		item.completed_on = Time.now
+		item.selected = false
+		item.save
+		working = Item.select_the_next_one(list.id)
+		flash[:notice] = "Thank you.  Item is completed.  Here is your next item."
+		redirect_to({:action =>'display', :list_id => list.id})
+	end	
+
 
 end

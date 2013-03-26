@@ -3,8 +3,8 @@ class Item < ActiveRecord::Base
   belongs_to :list
   
   scope :get_selected, lambda{|id| where({ :selected => true, :list_id => "#{id}" }) }
-  scope :get_working_set, lambda{|id| where({:selected => false, :list_id => "#{id}", :completed_on => nil})  }
-  
+ # scope :get_working_set, lambda{|id| where({:selected => false, :list_id => "#{id}", :completed_on => nil})  }
+  scope :get_working_set, lambda{|id| where(["selected = false AND list_id = ? AND completed_on IS NULL and number_of_skips <= ?", id, 3])  }
   validates :name,
 	:presence => true, :length => {:within => 3..30}
   validates :short_description,

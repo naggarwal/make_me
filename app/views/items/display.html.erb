@@ -1,6 +1,40 @@
-<h2>Item</h2>
+
 	<% if @selected != nil %>
-		<div><%=@selected.name %></div>
+		<div class="itemWrapper span8 offset2">
+			<div class="itemTitle">
+				<% if (@selected.main_url?) %>
+					<%=link_to(@selected.name, @selected.main_url) %>
+				<% else %>
+					<%= @selected.name %>
+				<% end %>
+			</div>
+			<div class="itemImageWrapper">
+				<% if (@selected.image_url?) %>
+					<%= image_tag(@selected.image_url, :class => "itemImage") %>
+				<% else %>
+					
+				<% end %>
+			</div>
+			<div class="itemURL">
+				<% if (@selected.main_url?) %>
+					<%=link_to(@selected.main_url, @selected.main_url) %>
+				<% else %>
+					
+				<% end %>
+			</div>
+			<div class="actionButtons">
+				<div class="span3">
+					<%=link_to("Completed!", {:action => 'complete', :id => @selected.id}, {:class => "btn btn-primary btn-large btn-block"})%>
+				</div>
+				<div class="span3">
+					<%if (@selected.number_of_skips < 3 )%>
+						<%=link_to("Skip for now (#{3 - @selected.number_of_skips})", {:action => 'skip' , :id => @selected.id}, {:class => "btn btn-danger btn-large btn-block"})%>
+					<% else %>
+						<%=link_to("Maxiumum Skips Reached", "#", {:class => "btn btn-danger btn-large btn-block disabled"})%>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	<% else %>
 		<div>
 		Add a new item to your list :<br />
