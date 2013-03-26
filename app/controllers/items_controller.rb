@@ -89,7 +89,7 @@ class ItemsController < ApplicationController
 		item.number_of_skips =  item.number_of_skips + 1
 		item.selected = false
 		item.save
-		flash[:notice] = "Item Skiped. You can skip \"#{item.name}\" another #{pluralize(item.number_of_skips, 'time')}."
+		flash[:notice] = "Item Skiped. You can skip \"#{item.name}\" another #{3 - item.number_of_skips} times."
 		redirect_to({:action =>'display', :list_id => list.id})
 	end
 	
