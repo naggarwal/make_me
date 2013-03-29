@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
 		list_id = params[:list_id]
 		@list = List.find(list_id)
 		puts "List id is : #{list_id}"
-		selected_list = Item.get_selected(list_id).limit(1)
+		selected_list = @list.items.where(selected: true).first
 		puts "Selected List = #{selected_list}"
 		if (selected_list.size == 0 )
 			not_selected_list = Item.get_working_set(list_id)

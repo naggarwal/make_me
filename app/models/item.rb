@@ -13,8 +13,6 @@ class Item < ActiveRecord::Base
   validates :name, length: { within: 3..30 }
   validates :short_description, length: { maximum: 140 }
 
-  scope :get_selected, lambda{|id| where({ :selected => true, :list_id => "#{id}" }) }
-
   scope :get_working_set, lambda{|id| where(["selected = false AND list_id = ? AND completed_on IS NULL and number_of_skips <= ?", id, 3])  }
 
   def self.select_the_next_one(list_id)
