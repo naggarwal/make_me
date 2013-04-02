@@ -20,7 +20,8 @@ end
 
 group :test do
   gem 'bourne', require: false
-  gem 'capybara-webkit', '>= 0.14.1'
+  #gem 'capybara-webkit', '>= 0.14.1'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'launchy'

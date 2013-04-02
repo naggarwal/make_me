@@ -10,3 +10,4 @@ describe List, 'validations' do
   it { expect(subject).to ensure_length_of(:name).is_at_least(3) }
   it { expect(subject).to ensure_length_of(:name).is_at_most(30) }
 end
+  
