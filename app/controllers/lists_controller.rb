@@ -9,9 +9,7 @@ class ListsController < ApplicationController
 	def list
 		if (user_signed_in?)
 			puts "User ID : #{current_user.id}"
-			@lists = List.get_users_list(current_user.id)
-		else
-			@lists = nil
+			@lists = current_user.lists
 		end
 	end
 	
