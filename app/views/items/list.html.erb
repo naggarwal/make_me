@@ -13,7 +13,13 @@
 			</tr>
 			<% @items.each do |item| %>
 				<tr>
-					<td><%= item.name %></td>
+					<td>
+						<% if(item.selected) %>
+							<%= link_to(item.name, {:action => 'display', :list_id => item.list.id} ) %>
+						<% else %>
+							<%= item.name %>
+						<% end %>
+					</td>
 					<td>
 						<% if (item.selected) %>
 							<i class="icon-ok-sign"></i>
@@ -55,7 +61,7 @@
 	<% end %>
 	<p></p>
 	<div class="row">
-		<div class="span5">
-			<%=link_to("Add new Item", {:action => 'new', :id => @list.id})%>
+		<div class="span5 btnbar">
+			<%=link_to("Add new Item", {:action => 'new', :id => @list.id}, {:class => "btn btn-primary"})%>
 		</div>
 	</div>
