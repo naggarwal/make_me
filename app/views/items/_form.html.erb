@@ -1,7 +1,10 @@
 <%= error_messages_for(@item) %>
 <input type=hidden name="listId" id="listId" value="<%=@list.id%>">
-<%= f.input :name, required: true, hint:"Enter the name of the item" %>
-<%= f.input :short_description, as: :text, required: false, label: "What is this", hint:"What is the purpose of this?" %>
-<%= f.input :image_url, required: false, hint:"Optional" %>
-<%= f.input :main_url, required: false, label:"Link", hint:"Is there a URL?" %>
-<%= f.button :submit %>
+<%= f.input :name, required: true, hint:"Enter the name of the item", input_html: { class: 'input-xxlarge', placeholder: 'Item Name' }  %>
+<%= f.input :short_description, as: :text, required: false, label: "What is this", hint:"What is the purpose of this?", input_html: { class: 'input-xxlarge', rows: '10'} %>
+<span id="optional" onclick="item.toggleForm();" class="btn btn-link">Show Advanced <i class="icon-plus-sign"></i></span>
+<div id="formOptional" class="hide">
+	<%= f.input :image_url, required: false, hint:"Optional", input_html: { class: 'input-xxlarge', placeholder: 'URL for an image to display' } %>
+	<%= f.input :main_url, required: false, label:"Link", hint:"Is there a URL?", input_html: { class: 'input-xxlarge', placeholder: 'Link to site' } %>
+</div>
+
