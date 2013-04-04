@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "authbuttons-rails"
 gem 'bootstrap-sass'
 #gem 'devise'
 gem 'clearance', '1.0.0.rc7'

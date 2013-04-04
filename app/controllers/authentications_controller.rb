@@ -1,6 +1,6 @@
 class AuthenticationsController < ApplicationController
   def index
-    @authentications = Authentication.all
+    @authentications = current_user.authentications if current_user
   end
 
   def create
@@ -23,7 +23,7 @@ class AuthenticationsController < ApplicationController
   end
 
   def destroy
-    @authentication = Authentication.find(params[:id])
+    @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
     redirect_to authentications_url, :notice => "Successfully destroyed authentication."
   end

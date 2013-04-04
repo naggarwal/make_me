@@ -9,7 +9,28 @@
     </div>
 
     <div class='other-links'>
-      <%= link_to t('.sign_in'), sign_in_path %>
+      Already have a username and password? <%= link_to t('.sign_in'), sign_in_path %> here.<br />
+	  or use one of the outside acounts:<br \>
+	  <!--
+<a href="/auth/twitter" class="auth_provider">
+  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+  Twitter
+</a>
+-->
+<a href="/auth/facebook" class="auth_provider">
+  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+  Facebook
+</a>
+<!--
+<a href="/auth/google_apps" class="auth_provider">
+  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+  Google
+</a>
+<a href="/auth/open_id" class="auth_provider">
+  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+  OpenID
+</a>
+	  
     </div>
   <% end %>
 </div>
