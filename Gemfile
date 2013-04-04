@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
-gem 'devise'
+#gem 'devise'
+gem 'clearance', '1.0.0.rc7'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rails', '3.2.12'
