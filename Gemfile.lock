@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.3)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     better_errors (0.7.2)
       coderay (>= 1.0.0)
@@ -48,6 +49,7 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
+    certified (0.1.1)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     clearance (1.0.0.rc7)
@@ -75,14 +77,21 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
+    ffi (1.6.0)
     ffi (1.6.0-x86-mingw32)
+    hashie (1.2.0)
     hike (1.2.1)
+    httpauth (0.2.0)
     i18n (0.6.4)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
     launchy (2.2.0)
       addressable (~> 2.3)
     mail (2.4.4)
@@ -94,7 +103,31 @@ GEM
     mocha (0.13.3)
       metaclass (~> 0.0.1)
     multi_json (1.7.1)
+    multipart-post (1.2.0)
+    nifty-generators (0.4.6)
+    nokogiri (1.5.9)
     nokogiri (1.5.9-x86-mingw32)
+    oauth (0.4.7)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.3)
+      hashie (~> 1.2)
+      rack
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.16)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
     pg (0.14.1)
     pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
@@ -184,12 +217,18 @@ DEPENDENCIES
   bootstrap-sass
   bourne
   capybara
+  certified
   clearance (= 1.0.0.rc7)
   coffee-rails (~> 3.2.1)
   database_cleaner
   factory_girl_rails
   jquery-rails
   launchy
+  mocha
+  nifty-generators
+  omniauth
+  omniauth-facebook
+  omniauth-twitter
   pg
   rails (= 3.2.12)
   rspec-rails
