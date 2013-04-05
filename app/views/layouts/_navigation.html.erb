@@ -4,12 +4,15 @@
     <li>
     <%= link_to 'Sign out', sign_out_path, :method => :delete %>
     </li>
+    <li>
+    <%= link_to 'Add Services', {:controller => 'authentications'} %>
+    </li>
 	
   <% else %>
     <li>
     <%= link_to 'Sign in', sign_in_path %>
     </li>
-	<li>
+	  <li>
     <%= link_to 'Sign up', sign_up_path %>
     </li>
   <% end %>
