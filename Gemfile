@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+gem "authbuttons-rails"
 gem 'bootstrap-sass'
-gem 'devise'
+gem 'clearance', '1.0.0.rc7'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'pg'
 gem 'rails', '3.2.12'
 gem 'simple_form'
@@ -16,11 +20,12 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'certified'
+  gem 'nifty-generators'
 end
 
 group :test do
   gem 'bourne', require: false
-  #gem 'capybara-webkit', '>= 0.14.1'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
@@ -30,3 +35,5 @@ group :test do
   gem 'simplecov', require: false
   gem 'timecop'
 end
+
+gem "mocha", :group => :test
