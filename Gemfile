@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem "authbuttons-rails"
 gem 'bootstrap-sass'
-#gem 'devise'
 gem 'clearance', '1.0.0.rc7'
 gem 'jquery-rails'
 gem 'omniauth'
@@ -22,7 +21,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'certified'
-  gem "nifty-generators"
+  gem 'nifty-generators'
 end
 
 group :test do
