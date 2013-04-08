@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-	before_filter :authenticate_user!
+	#before_filter :authenticate_user!
 	
 	def index
 		list
@@ -7,7 +7,7 @@ class ListsController < ApplicationController
 	end
 	
 	def list
-		if (user_signed_in?)
+		if (signed_in?)
 			puts "User ID : #{current_user.id}"
 			@lists = current_user.lists
 		end

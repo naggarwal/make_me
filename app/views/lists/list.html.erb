@@ -12,7 +12,7 @@
 		(can't?)
 		Well, we let you skip doing something up to <strong>three</strong> times, no more.  If you skip it more than three times, you probably really don't want to do it.
 	</div>
-	<% if user_signed_in? %>
+	<% if signed_in? %>
 		<div class="span12" style="padding-top:15px">
 		<div><h2>Your Categories:</h2></div>
 			<% if @lists.size > 0 %>
